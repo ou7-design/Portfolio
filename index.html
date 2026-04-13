@@ -1,0 +1,1719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google Analytics — deferred until idle so it doesn't block rendering -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    function loadGA() {
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-C5DGNJQL76';
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', 'G-C5DGNJQL76');
+    }
+    if ('requestIdleCallback' in window) { requestIdleCallback(loadGA); }
+    else { window.addEventListener('load', loadGA); }
+  </script>
+  <script>(function(){var s=localStorage.getItem('theme');document.documentElement.setAttribute('data-theme',s?s:(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light'));}());</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Ilkhom Shakirov — AI Specialist</title>
+  <meta name="description" content="Senior Product Designer based in Berlin. Eight years of experience across banking, fitness, streaming and food tech. Currently open to new opportunities." />
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website" />
+  <meta property="og:url"         content="https://dvdrod.com/" />
+  <meta property="og:title"       content="Ilkhom Shakirov — AI Specialist" />
+  <meta property="og:description" content="Senior Product Designer based in Berlin. Eight years across banking, fitness, streaming and food tech. Currently open to new opportunities." />
+  <meta property="og:image"       content="logo.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image" />
+  <meta name="twitter:title"       content="Ilkhom Shakirov — AI Specialist" />
+  <meta name="twitter:description" content="Senior Product Designer based in Berlin. Eight years across banking, fitness, streaming and food tech. Currently open to new opportunities." />
+  <meta name="twitter:image"       content="logo.jpg" />
+
+  <!-- Fonts — preloaded async to avoid render-blocking -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:ital,wght@0,300;0,400;0,600;1,300&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:ital,wght@0,300;0,400;0,600;1,300&display=swap" /></noscript>
+
+
+  <style>
+    /* ============================================
+       VARIABLES & THEMES
+    ============================================ */
+    :root {
+      --bg:        #0C0C0B;
+      --bg2:       #141413;
+      --fg:        #EDEDE8;
+      --muted:     #93938F;
+      --border:    rgba(237,237,232,0.09);
+      --border-hover: rgba(237,237,232,0.38);
+      --accent:    #FF3D00;
+      --accent2:   #FF7A5C;
+      --radius:    14px;
+      --transition: 0.4s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    [data-theme="light"] {
+      --bg:        #F0EDE5;
+      --bg2:       #E8E5DD;
+      --fg:        #0C0C0B;
+      --muted:     #5B5A57;
+      --border:    rgba(12,12,11,0.1);
+      --border-hover: rgba(12,12,11,0.38);
+      --accent:    #FF3D00;
+      --accent2:   #D93300;
+    }
+
+    /* ============================================
+       RESET
+    ============================================ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--fg);
+      overflow-x: hidden;
+      cursor: none;
+      transition: background var(--transition), color var(--transition);
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    ul { list-style: none; }
+
+    /* Suppress browser default cursor everywhere so the custom one is always on top */
+    *, *::before, *::after { cursor: none !important; }
+
+    /* Touch devices: restore default cursor, hide custom cursor element */
+    @media (pointer: coarse) {
+      *, *::before, *::after { cursor: auto !important; }
+      body { cursor: auto; }
+      .cursor { display: none !important; }
+    }
+
+    /* ============================================
+       NOISE OVERLAY
+    ============================================ */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.028;
+      pointer-events: none;
+      z-index: 9997;
+    }
+
+    /* ============================================
+       CURSOR - MIRO STYLE
+    ============================================ */
+    .cursor {
+      position: fixed;
+      top: 0; left: 0;
+      pointer-events: none;
+      z-index: 9999;
+      /* tip of the arrow is the reference point */
+      will-change: transform;
+      opacity: 0;
+    }
+
+    /* Arrow SVG */
+    .cursor-arrow {
+      position: absolute;
+      top: 0; left: 0;
+      width: 22px; height: 26px;
+      transition: transform 0.2s cubic-bezier(0.25,0.46,0.45,0.94);
+      filter: drop-shadow(0 1px 3px rgba(0,0,0,0.45));
+    }
+    .cursor-arrow svg { display: block; }
+
+    /* Guest label pill */
+    .cursor-label {
+      position: absolute;
+      /* align with tip: offset right of the arrow and slightly below */
+      top: 18px;
+      left: 16px;
+      background: #1A1A19;
+      color: #EDEDE8;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 4px 10px 4px 8px;
+      border-radius: 100px;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.35), inset 0 0 0 1px rgba(255,255,255,0.07);
+      transition: background 0.25s ease, transform 0.2s cubic-bezier(0.25,0.46,0.45,0.94);
+      /* keep legible in light mode too */
+    }
+    .cursor-label-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #FF3D00;
+      flex-shrink: 0;
+    }
+    
+    @keyframes pill-bounce {
+      0%   { transform: scale(1,1); }
+      18%  { transform: scale(1.14,0.86); }
+      38%  { transform: scale(0.93,1.07); }
+      58%  { transform: scale(1.05,0.96); }
+      78%  { transform: scale(0.98,1.02); }
+      100% { transform: scale(1,1); }
+    }
+    #cursorLabelText { transition: opacity 0.12s ease; }
+
+    /* Hover state - arrow tilts, pill bounces red */
+    body.is-hovering .cursor-arrow {
+      transform: rotate(-12deg) scale(0.92);
+    }
+    body.is-hovering .cursor-label {
+      background: #FF3D00;
+      color: #fff;
+      animation: pill-bounce 0.42s cubic-bezier(.36,.07,.19,.97);
+    }
+    body.is-hovering .cursor-label-dot {
+      background: rgba(255,255,255,0.6);
+    }
+    /* ============================================
+       PRELOADER
+    ============================================ */
+    #preloader {
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      z-index: 9000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .pl-name {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(32px, 6vw, 72px);
+      font-weight: 800;
+      letter-spacing: -0.045em;
+      overflow: hidden;
+      text-align: center;
+    }
+    .pl-name span { display: inline-block; transform: translateY(110%); }
+    .pl-bar-wrap {
+      width: 160px; height: 1px;
+      background: var(--border);
+      overflow: hidden;
+    }
+    .pl-bar {
+      height: 100%;
+      width: 0;
+      background: var(--fg);
+      transition: width 0.9s cubic-bezier(0.76, 0, 0.24, 1);
+    }
+
+    /* ============================================
+       NAVIGATION
+    ============================================ */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      padding: 22px 44px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition:
+        padding 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+        top 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+        left 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+        right 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+        border-radius 0.45s cubic-bezier(0.4, 0, 0.2, 1),
+        background 0.4s ease,
+        backdrop-filter 0.4s ease,
+        box-shadow 0.4s ease;
+    }
+    nav.scrolled {
+      top: 16px;
+      left: 22%;
+      right: 22%;
+      gap: 48px;
+      padding: 14px 36px;
+      border-radius: 100px;
+      background: rgba(12,12,11,0.80);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.25);
+    }
+    [data-theme="light"] nav.scrolled {
+      background: rgba(240,237,229,0.85);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+    }
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      /* opacity set via gsap.set() in heroIn() */
+    }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      /* opacity set via gsap.set() in heroIn() */
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+    }
+    .nav-links a {
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.3s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0;
+      width: 0; height: 1px;
+      background: var(--fg);
+      transition: width 0.3s ease;
+    }
+    .nav-links a:hover { color: var(--fg); }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* Theme Toggle */
+    .theme-btn {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 7px 15px;
+      cursor: none;
+      color: var(--muted);
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+    }
+    .theme-btn:hover { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+    .theme-btn .t-icon { font-size: 13px; }
+
+    /* ============================================
+       HERO
+    ============================================ */
+    #hero {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 44px max(56px, calc(56px + env(safe-area-inset-bottom)));
+      position: relative;
+    }
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .hero-eyebrow span { display: inline-block; transform: translateY(110%); }
+
+    .hero-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(72px, 12vw, 176px);
+      font-weight: 800;
+      line-height: 0.88;
+      letter-spacing: -0.05em;
+      margin-bottom: 48px;
+    }
+    .hero-title .tl { overflow: hidden; display: block; }
+    .hero-title .tl span { display: block; transform: translateY(110%); }
+    .s-title .tl { overflow: hidden; display: block; }
+    .s-title .tl span { display: block; transform: translateY(110%); }
+
+    .hero-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 32px;
+    }
+    .hero-desc {
+      max-width: 360px;
+      font-size: 15px;
+      line-height: 1.65;
+      color: var(--muted);
+      font-weight: 300;
+      overflow: hidden;
+    }
+    /* .hero-desc initial state set via gsap.set() — keeps element visible for LCP before JS runs */
+
+    .hero-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 11px;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      border: 1px solid var(--border);
+      padding: 7px 14px;
+      border-radius: 100px;
+      color: var(--muted);
+      /* transform + opacity set via gsap.set() in heroIn() */
+    }
+    .pill.available { border-color: rgba(0,220,100,0.28); color: rgba(0,220,100,0.85); }
+    [data-theme="light"] .pill.available { color: #006E2D; border-color: rgba(0,110,45,0.35); }
+    .pill-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+      animation: blink 2.2s ease infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+    /* Scroll line */
+    .scroll-hint {
+      position: absolute;
+      top: 110px; right: 44px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      opacity: 0;
+    }
+    .scroll-hint span {
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      writing-mode: vertical-lr;
+    }
+    .sh-line {
+      width: 1px; height: 64px;
+      background: var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+    .sh-line::after {
+      content: '';
+      position: absolute;
+      top: -100%; left: 0;
+      width: 100%; height: 100%;
+      background: var(--accent);
+      animation: shline 2.4s ease infinite;
+    }
+    @keyframes shline { 0%{top:-100%} 100%{top:100%} }
+
+    /* ============================================
+       MARQUEE
+    ============================================ */
+    .marquee-wrap {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 14px 0;
+      overflow: hidden;
+      white-space: nowrap;
+      margin-bottom: 60px;
+    }
+    .marquee-track {
+      display: inline-flex;
+      animation: mq 28s linear infinite;
+    }
+    .marquee-wrap:hover .marquee-track { animation-play-state: paused; }
+    .mq-item {
+      font-family: 'Syne', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 0 28px;
+      display: inline-flex;
+      align-items: center;
+      gap: 56px;
+    }
+    .mq-item::after { content: '✦'; font-size: 7px; }
+    @keyframes mq { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+    /* ============================================
+       SECTION COMMON
+    ============================================ */
+    .s-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 64px;
+    }
+    .s-label {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .s-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(52px, 8vw, 110px);
+      font-weight: 800;
+      letter-spacing: -0.045em;
+      line-height: 0.88;
+    }
+    .s-count {
+      font-family: 'Syne', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--muted);
+    }
+    .cv-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      align-self: flex-end;
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 7px 15px;
+      color: var(--muted);
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: all 0.3s ease;
+      cursor: none;
+    }
+    .cv-btn:hover { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+    .cv-btn:hover svg { stroke: var(--bg); transform: translateX(3px); }
+    .cv-btn svg { flex-shrink: 0; transition: stroke 0.3s ease, transform 0.3s ease; }
+
+    /* ============================================
+       WORK
+    ============================================ */
+    #work { padding: 40px 44px; }
+
+    .projects { display: flex; flex-direction: column; gap: 16px; margin-bottom: 60px;}
+
+    .pcard {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      cursor: none;
+      /* opacity + transform set via gsap.set() in initScroll() */
+      transition: border-color 0.4s ease;
+    }
+    .pcard:hover { border-color: var(--border-hover); }
+    .pcard--wip { pointer-events: none; }
+    .pcard--wip .p-arrow { display: none; }
+    .wip-badge { display:inline-flex; align-items:center; gap:7px; font-size:10px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:#F59E0B; background:rgba(245,158,11,0.12); border:1px solid rgba(245,158,11,0.3); border-radius:100px; padding:5px 12px; }
+    .wip-badge-dot { width:6px; height:6px; border-radius:50%; background:#F59E0B; flex-shrink:0; animation: blink 2.2s ease infinite; }
+    .pcard-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 400px;
+    }
+    .pcard-info {
+      padding: 40px 44px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .pcard-top {
+      display: flex;
+      align-items: flex-start;
+    }
+    .pnum {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+    }
+    .tags { display: flex; gap: 6px; flex-wrap: wrap; }
+    .tag {
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 11px;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      color: var(--muted);
+    }
+    .pcard-mid {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 14px;
+      padding: 4px 0;
+    }
+    .pcompany {
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .pname {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(22px, 2.8vw, 40px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.08;
+    }
+    .pyear { font-size: 12px; color: var(--muted); margin-top: 10px; }
+    .pmetrics { display: flex; gap: 32px; }
+    .pmetric { display: flex; flex-direction: column; gap: 3px; }
+    .pm-val {
+      font-family: 'Inter', sans-serif;
+      font-size: 30px;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: var(--muted);
+    }
+    .pm-label { font-size: 11px; color: var(--muted); line-height: 1.35; max-width: 130px; }
+
+    /* Card Visual */
+    .pcard-vis {
+      position: relative;
+      overflow: hidden;
+    }
+    .pcard-bg {
+      position: absolute;
+      inset: 0;
+      transition: transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .pcard:hover .pcard-bg { transform: scale(1.06); }
+
+    /* Project gradients */
+    .p-caixabank .pcard-bg  { background: linear-gradient(145deg, #000B35 0%, #001F82 55%, #0050FF 100%); }
+    .p-gymondo1  .pcard-bg  { background: transparent; }
+    .p-gymondo2  .pcard-bg  { background: linear-gradient(145deg, #1A0400 0%, #4A1000 55%, #7A1E00 100%); }
+    .p-zattoo    .pcard-bg  { background: linear-gradient(145deg, #1A0A00 0%, #4A2000 55%, #CC5500 100%); }
+    .p-nt-onboarding .pcard-bg { background: linear-gradient(145deg, #1A0500 0%, #7A2800 55%, #D44A0A 100%); }
+    .p-nt-quests     .pcard-bg { background: transparent; }
+    .p-nt-referral   .pcard-bg { background: transparent; }
+
+    .pcard-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; object-position: center; border-radius: 20px;
+      object-position: center center;
+      transition: transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94);
+      z-index: 1;
+    }
+    .pcard:hover .pcard-img { transform: scale(1.02); }
+    .pcard-img-overlay { display: none !important; }
+
+    /* Decorative blobs */
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.22;
+      filter: blur(0px);
+      transition: transform 0.9s ease, opacity 0.9s ease;
+    }
+    .pcard:hover .blob { opacity: 0.38; transform: scale(1.2) rotate(20deg); }
+
+    .p-caixabank .blob1 { width:320px;height:320px;top:-80px;right:-60px;background:#3B82F6; }
+    .p-caixabank .blob2 { width:200px;height:200px;bottom:20px;right:80px;background:#93C5FD; opacity:0.12; }
+    .p-gymondo1  .blob1 { display: none; }
+    .p-gymondo1  .blob2 { display: none; }
+    .p-gymondo2  .blob1 { width:320px;height:320px;top:-80px;right:-70px;background:#EF4444; }
+    .p-gymondo2  .blob2 { width:200px;height:200px;bottom:30px;right:70px;background:#FCA5A5; opacity:0.1; }
+    .p-zattoo        .blob1 { width:310px;height:310px;top:-70px;right:-60px;background:#F97316; }
+    .p-zattoo        .blob2 { width:190px;height:190px;bottom:40px;right:80px;background:#FED7AA; opacity:0.1; }
+    .p-nt-onboarding .blob1 { width:320px;height:320px;top:-80px;right:-60px;background:#FF6B35; }
+    .p-nt-onboarding .blob2 { width:200px;height:200px;bottom:30px;right:70px;background:#FDBA74; opacity:0.1; }
+    .p-nt-quests     .blob1 { display: none; }
+    .p-nt-quests     .blob2 { display: none; }
+    .p-nt-referral   .blob1 { display: none; }
+    .p-nt-referral   .blob2 { display: none; }
+
+    /* Corner arrow */
+    .p-arrow {
+      position: absolute;
+      bottom: 24px; right: 24px;
+      width: 44px; height: 44px;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s, border-color 0.3s, transform 0.3s;
+    }
+    .pcard:hover .p-arrow {
+      background: #fff;
+      border-color: #fff;
+      transform: rotate(45deg);
+    }
+    .pcard:hover .p-arrow svg path { stroke: #000; }
+
+    /* ============================================
+       ABOUT
+    ============================================ */
+    #about {
+      padding: 40px 44px;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 80px;
+      margin-top: 80px;
+      margin-bottom: 60px;
+    }
+    .about-bio p {
+      font-size: clamp(17px, 1.7vw, 22px);
+      line-height: 1.62;
+      font-weight: 300;
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+    .about-bio p:last-child { margin-bottom: 0; }
+    .about-bio strong { font-weight: 300; color: var(--fg); }
+    .about-bio em { font-style: normal; color: var(--accent); }
+
+    .about-side { display: flex; flex-direction: column; gap: 44px; }
+    .detail-h {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .exp-list { display: flex; flex-direction: column; }
+    .exp-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+      gap: 12px;
+    }
+    .ei-l { display: flex; flex-direction: column; gap: 2px; }
+    .ei-co {
+      font-family: 'Syne', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .ei-role { font-size: 12px; color: var(--muted); }
+    .ei-yr { font-size: 11px; color: var(--muted); white-space: nowrap; flex-shrink: 0; }
+
+    /* .pdf-strip and .about-bio .cv-btn initial states set via gsap.set() — see initScroll() */
+
+    .awards-list { display: flex; flex-direction: column; }
+    .award-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+      gap: 12px;
+    }
+    .aw-l { display: flex; flex-direction: column; gap: 2px; }
+    .aw-title { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: -0.01em; }
+    .aw-issuer { font-size: 12px; color: var(--muted); }
+    .aw-yr { font-size: 11px; color: var(--muted); white-space: nowrap; flex-shrink: 0; }
+
+    /* Skills row */
+    .skills-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+    .skill-pill {
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      padding: 6px 14px;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      color: var(--muted);
+    }
+
+    /* ============================================
+       CONTACT
+    ============================================ */
+    #contact {
+      padding: 40px 44px 80px;
+    }
+    .contact-headline {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(52px, 9vw, 130px);
+      font-weight: 800;
+      letter-spacing: -0.045em;
+      line-height: 0.88;
+      margin: 56px 0 72px;
+      overflow: hidden;
+    }
+    .contact-headline .tl { overflow: hidden; display: block; }
+    .contact-headline .tl span { display: block; }
+    .contact-headline a {
+      position: relative;
+      display: inline-block;
+      transition: color 0.3s;
+    }
+    .contact-headline a::after {
+      content: '';
+      position: absolute;
+      bottom: 6px; left: 0;
+      width: 0; height: 4px;
+      background: var(--accent);
+      transition: width 0.55s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .contact-headline a:hover { color: var(--accent); }
+    .contact-headline a:hover::after { width: 100%; }
+
+    .contact-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding-top: 36px;
+    }
+    .cf-left { display: flex; flex-direction: column; }
+    .cf-email-row { display: flex; align-items: center; gap: 8px; }
+    .cf-left p { font-size: 13px; color: var(--muted); line-height: 1.7; }
+    .copy-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border: none;
+      padding: 2px;
+      cursor: none;
+      color: var(--muted);
+      opacity: 0;
+      transition: opacity 0.2s ease, color 0.2s ease;
+    }
+    .cf-email-row:hover .copy-btn { opacity: 1; }
+    .copy-btn:hover { color: var(--fg); }
+    .copy-btn.copied { color: #00C96B; opacity: 1; }
+    .cf-right {
+      display: flex;
+      gap: 24px;
+    }
+    .cf-right a {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.3s;
+    }
+    .cf-right a:hover { color: var(--fg); }
+    .copy {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 32px;
+      text-align: center;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ============================================
+       UTILITIES
+    ============================================ */
+    .sr-only {
+      position: absolute; width:1px; height:1px;
+      padding:0; margin:-1px; overflow:hidden;
+      clip:rect(0,0,0,0); white-space:nowrap; border:0;
+    }
+
+    /* ============================================
+       RESPONSIVE
+    ============================================ */
+    @media (max-width: 900px) {
+      nav { padding: 18px 24px; }
+      nav.scrolled { top: 12px; left: 16px; right: 16px; padding: 12px 20px; }
+      #hero { padding: 0 24px max(40px, calc(40px + env(safe-area-inset-bottom))); }
+      .hero-bottom { flex-direction: column; align-items: flex-start; }
+      .hero-right { align-items: flex-start; }
+      .scroll-hint { top: auto; bottom: 56px; }
+      #work, #about, #contact { padding: 40px 24px; }
+      .s-header { margin-bottom: 40px; }
+      .pcard-inner { grid-template-columns: 1fr; }
+      .pcard-vis { height: 220px; order: -1; }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; margin-top: 48px; }
+      .contact-footer { flex-direction: column; gap: 24px; align-items: flex-start; }
+      .nav-links { display: none; }
+    }
+    @media (max-width: 480px) {
+      .hero-title { font-size: 15vw; hyphens: manual; overflow-wrap: break-word; }
+      .s-title { font-size: 14vw; }
+      .pname { font-size: 7vw; }
+      .pcard-info { padding: 28px 24px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .marquee-track { animation: none; }
+      .sh-line::after { animation: none; }
+      .pill-dot, .wip-badge-dot { animation: none; }
+    }
+
+    /* ─── R-K TOOLBAR STYLES ─── */
+    .rk-fixed-container {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9999;
+      width: 100%;
+      max-width: 460px;
+      padding: 0 20px;
+      pointer-events: none;
+    }
+
+    /* ─── OVERLAY ─── */
+    .rk-overlay {
+      position: absolute;
+      bottom: 56px;
+      left: 20px;
+      right: 20px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      height: auto;
+      min-height: 240px;
+      z-index: 20;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: repeat(3, 110px);
+      gap: 1px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+      pointer-events: none;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    }
+    .rk-overlay.open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0%);
+      pointer-events: auto;
+    }
+
+    .rk-cell {
+      background: var(--bg2);
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding: 16px;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .rk-cell:hover { background: var(--bg); }
+    .rk-cell a {
+      color: var(--fg);
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .rk-cell.icon-cell {
+      align-items: center;
+      justify-content: center;
+    }
+    .rk-cell.icon-cell svg { width: 18px; height: 18px; fill: var(--muted); transition: fill 0.3s; }
+    .rk-cell:hover svg { fill: var(--fg); }
+
+    /* ─── BOTTOM BAR ─── */
+    .rk-bar {
+      position: relative;
+      z-index: 30;
+      display: flex;
+      align-items: stretch;
+      height: 48px;
+      background: transparent;
+      gap: 4px;
+      padding: 0;
+      pointer-events: auto;
+    }
+
+    .rk-bar-segment {
+      background: var(--bg2);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      user-select: none;
+      border-radius: 12px;
+    }
+    .rk-bar-segment:hover { border-color: var(--border-hover); background: var(--bg); }
+
+    /* Light mode logo color flip */
+    [data-theme='light'] .rk-logo-seg img { filter: invert(1) brightness(0); }
+
+    .rk-logo-seg {
+      width: 64px;
+      flex-shrink: 0;
+    }
+    .rk-logo-seg img {
+      width: 50px; height: 50px;
+      object-fit: contain;
+    }
+
+    .rk-dir-seg {
+      flex: 1.2;
+      gap: 10px;
+      padding: 0 16px;
+      justify-content: space-between;
+    }
+    .rk-dir-seg span {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--muted);
+      transition: color 0.3s;
+    }
+    .rk-dir-seg:hover span { color: var(--fg); }
+
+    .rk-ham {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 3px;
+      width: 16px;
+      height: 16px;
+    }
+    .rk-ham span {
+      display: block;
+      height: 1.5px;
+      background: var(--muted);
+      border-radius: 1px;
+      transition: all 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+      transform-origin: center;
+    }
+    .rk-dir-seg:hover .rk-ham span { background: var(--fg); }
+    .rk-ham.active span:nth-child(1) { transform: translateY(4.5px) rotate(45deg); background: var(--accent) !important; }
+    .rk-ham.active span:nth-child(2) { opacity: 0; }
+    .rk-ham.active span:nth-child(3) { transform: translateY(-4.5px) rotate(-45deg); background: var(--accent) !important; }
+
+    .rk-sound-seg {
+      flex: 1;
+      gap: 10px;
+      padding: 0 16px;
+      justify-content: space-between;
+    }
+    .rk-sound-seg span {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--muted);
+      transition: color 0.3s;
+    }
+    .rk-sound-seg:hover span { color: var(--fg); }
+
+    .rk-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 2px;
+      height: 12px;
+      width: 20px;
+    }
+    .rk-bar-line {
+      width: 2px;
+      background: var(--muted);
+      border-radius: 1px;
+      transition: all 0.3s;
+    }
+    .rk-sound-seg:hover .rk-bar-line { background: var(--fg); }
+    .rk-bars.playing .rk-bar-line { background: var(--accent); }
+    .rk-bars.playing .rk-bar-line:nth-child(1) { animation: barUp 0.7s ease-in-out infinite alternate; }
+    .rk-bars.playing .rk-bar-line:nth-child(2) { animation: barUp 0.5s ease-in-out 0.1s infinite alternate; }
+    .rk-bars.playing .rk-bar-line:nth-child(3) { animation: barUp 0.9s ease-in-out 0.05s infinite alternate; }
+    .rk-bars.playing .rk-bar-line:nth-child(4) { animation: barUp 0.6s ease-in-out 0.2s infinite alternate; }
+    .rk-bars.playing .rk-bar-line:nth-child(5) { animation: barUp 0.8s ease-in-out 0.15s infinite alternate; }
+
+    @keyframes barUp {
+      0%   { height: 3px; }
+      100% { height: 11px; }
+    }
+    
+</style>
+  <link rel="icon" type="image/x-icon" href="logo.jpg">
+  <link rel="icon" type="image/svg+xml" href="logo.jpg">
+  <link rel="apple-touch-icon" href="logo.jpg">
+</head>
+<body>
+
+  <!-- ==================== PRELOADER ==================== -->
+  <div id="preloader" aria-hidden="true">
+    <div class="pl-name"><span>Ilkhom Shakirov</span></div>
+    <div class="pl-bar-wrap"><div class="pl-bar" id="plBar"></div></div>
+  </div>
+
+  <!-- ==================== CURSOR ==================== -->
+  <div class="cursor" id="cursor" aria-hidden="true">
+    <!-- Miro-style: arrow tip + Guest pill -->
+    <div class="cursor-arrow">
+      <svg width="22" height="26" viewBox="0 0 22 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 2L2 21L6.8 16.2L10.4 24L13.4 22.6L9.8 14.8L17 14.8L2 2Z"
+              fill="white"
+              stroke="#0C0C0B"
+              stroke-width="1.4"
+              stroke-linejoin="round"
+              stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="cursor-label" id="cursorLabel">
+      <span class="cursor-label-dot"></span>
+            <span id="cursorLabelText">Guest</span>
+    </div>
+  </div>
+
+      <!-- ==================== NAV ==================== -->
+  <nav id="nav">
+    <a href="#hero" class="nav-logo">mirabadskiy</a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="theme-btn" id="themeBtn" aria-label="Toggle colour scheme">
+        <span class="t-icon" id="tIcon">◐</span>
+        <span id="tLabel">Light</span>
+      </button>
+    </div>
+  </nav>
+
+  <main>
+
+  <!-- ==================== HERO ==================== -->
+  <section id="hero">
+    <p class="hero-eyebrow"><span>AI Specialist · Marketing Manager</span></p>
+
+    <h1 class="hero-title">
+      <span class="tl"><span>Ilkhom</span></span>
+      <span class="tl"><span>Shaki&shy;rov</span></span>
+    </h1>
+
+    <div class="hero-bottom">
+      <p class="hero-desc">
+        <span>Tashkent based. Building experience in Artificial Intelligence and Marketing through real projects in social media, content creation, and brand growth.</span>
+      </p>
+      <div class="hero-right">
+        <div class="pill available"><span class="pill-dot"></span>Available for work</div>
+        <div class="pill">Tashkent, Uzbekistan</div>
+      </div>
+    </div>
+
+    <div class="scroll-hint" aria-hidden="true">
+      <div class="sh-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ==================== MARQUEE ==================== -->
+  <div class="marquee-wrap" aria-hidden="true">
+    <div class="marquee-track">
+      <span class="mq-item">Artificial Intelligence</span>
+      <span class="mq-item">Marketing Strategy</span>
+      <span class="mq-item">Social Media Management</span>
+      <span class="mq-item">Content Creation</span>
+      <span class="mq-item">Brand Growth</span>
+      <span class="mq-item">Audience Engagement</span>
+      <span class="mq-item">Digital Marketing</span>
+      <span class="mq-item">AI Tools</span>
+      <span class="mq-item">Automation</span>
+      <span class="mq-item">Creative Thinking</span>
+      <span class="mq-item">Team Collaboration</span>
+      <span class="mq-item">Communication</span>
+      <span class="mq-item">Market Research</span>
+    </div>
+  </div>
+
+  <!-- ==================== WORK ==================== -->
+  <section id="work">
+    <div class="s-header">
+      <div>
+        <p class="s-label">Selected Projects</p>
+        <h2 class="s-title"><span class="tl"><span>Work</span></span></h2>
+      </div>
+    </div>
+
+    <div class="projects">
+
+      <!-- 02 - NeoTaste Quests -->
+      <article class="pcard p-nt-quests" data-index="1" onclick="window.location='https://osnovaedu.uz/'" style="cursor:none;">
+        <div class="pcard-inner">
+          <div class="pcard-info">
+            <div class="pcard-top">
+              <span class="pnum">01</span>
+            </div>
+            <div class="pcard-mid">
+              <p class="pyear">Osnova | 08.2025 – 09.2025</p>
+              <h3 class="pname">Building brand awareness <br> through marketing & <br>social growth</h3>
+              <div class="tags">
+                <span class="tag">CONTENT</span>
+                <span class="tag">SOCIAL MEDIA</span>
+              </div>
+            </div>
+          </div>
+          <div class="pcard-vis">
+            <div class="pcard-bg"></div>
+            <img class="pcard-img" src="https://static.tildacdn.one/tild3439-3439-4665-b232-653935383334/photo.png" alt="Quest System case study cover">
+            <div class="pcard-img-overlay"></div>
+            <div class="p-arrow" aria-hidden="true" style="z-index:3;">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M2 12L12 2M12 2H4M12 2V10" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 03 - NeoTaste Referral -->
+      <article class="pcard p-nt-referral pcard--wip" data-index="2" style="cursor:none;">
+        <div class="pcard-inner">
+          <div class="pcard-info">
+            <div class="pcard-top" style="display:flex;align-items:center;gap:14px;">
+              <span class="pnum">02</span>
+              <span class="wip-badge"><span class="wip-badge-dot"></span>Work in progress</span>
+            </div>
+            <div class="pcard-mid">
+              <p class="pyear">Shakirov Studio | 08.2025 – Present</p>
+              <h3 class="pname">Managing content to <br> boost digital engagement</h3>
+              <div class="tags">
+                <span class="tag">MARKETING</span>
+                <span class="tag">BRAND STRATEGY</span>
+              </div>
+            </div>
+          </div>
+          <div class="pcard-vis">
+            <div class="pcard-bg"></div>
+            <img class="pcard-img" src="/logostudio.png" alt="Referral A/B Test case study cover">
+            <div class="pcard-img-overlay"></div>
+            <div class="p-arrow" aria-hidden="true" style="z-index:3;">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <path d="M2 12L12 2M12 2H4M12 2V10" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+
+
+  </section>
+
+  <!-- ==================== ABOUT ==================== -->
+  <section id="about">
+    <div class="s-header">
+      <div>
+        <p class="s-label">My story</p>
+        <h2 class="s-title"><span class="tl"><span>About</span></span></h2>
+      </div>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-bio">
+        <p><strong>Motivated first-year Business student at Inha University</strong> with a strong interest in Artificial Intelligence and Marketing. Focused on building brand awareness and creating effective strategies to engage target audiences.</p>
+        <p><strong>I have experience in</strong> social media management, content creation, and marketing strategy, contributing ideas and analyzing audience feedback to improve results.</p>
+        <p>I am currently working as a <strong>Director at Shakirov Studio</strong>, where I develop marketing strategies to increase brand awareness. Previously, I worked as a <strong>Marketing Assistant at Osnova</strong> and as an <strong>Assistant Social Media Manager at Chotqol Sanatorium</strong>.</p>
+        <a href="Ilkhom_Shakirov_CV.png" target="_blank" rel="noopener" class="cv-btn" style="margin-top:20px;">
+          View CV
+          <svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 12L12 2M12 2H4M12 2V10"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="about-side">
+
+        <div>
+          <h3 class="detail-h">Experience</h3>
+          <ul class="exp-list">
+            <li class="exp-item">
+              <div class="ei-l">
+                <span class="ei-co">Shakirov Studio</span>
+                <span class="ei-role">Director</span>
+              </div>
+              <span class="ei-yr">09.2025 - Now</span>
+            </li>
+            <li class="exp-item">
+              <div class="ei-l">
+                <span class="ei-co">Osnova</span>
+                <span class="ei-role">Marketing Assistant</span>
+              </div>
+              <span class="ei-yr">08.2025 - 09.2025</span>
+            </li>
+            <li class="exp-item">
+              <div class="ei-l">
+                <span class="ei-co">Chotqol Sanatorium</span>
+                <span class="ei-role">Assistant Marketing Manager</span>
+              </div>
+              <span class="ei-yr">01.2024 - 05.2025</span>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="detail-h">Skills</h3>
+          <div class="skills-row">
+            <span class="skill-pill">Artificial Intelligence</span>
+            <span class="skill-pill">Marketing Strategy</span>
+            <span class="skill-pill">Social Media Management</span>
+            <span class="skill-pill">Content Creation</span>
+            <span class="skill-pill">Brand Growth</span>
+            <span class="skill-pill">Audience Engagement</span>
+            <span class="skill-pill">Digital Marketing</span>
+            <span class="skill-pill">AI Tools</span>
+            <span class="skill-pill">Automation</span>
+            <span class="skill-pill">Creative Thinking</span>
+            <span class="skill-pill">Team Collaboration</span>
+            <span class="skill-pill">Communication</span>
+            <span class="skill-pill">Market Research</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== CONTACT ==================== -->
+  <section id="contact">
+    <p class="s-label">Get in touch</p>
+
+    <div class="contact-headline">
+      <span class="tl"><span>Say hi!</span></span>
+      <span class="tl">
+        <span><a href="mailto:dvd.rod@proton.me" data-cursor="hi">Let's talk <svg width="0.7em" height="0.7em" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;vertical-align:middle;margin-bottom:0.12em;"><path d="M3 15L15 3M15 3H5M15 3V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></span>
+      </span>
+    </div>
+
+    <div class="contact-footer">
+      <div class="cf-left">
+        <p>Tashkent, Uzbekistan</p>
+      </div>
+      <div class="cf-right">
+        <a href="mailto:ilhomjonshakirov7@gmail.com" data-cursor="hi">Email</a>
+        <a href="https://www.linkedin.com/in/ilkhom-shakirov-38b231385?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener" data-cursor="hi">LinkedIn</a>
+        <a href="https://t.me/mirabadskiy" target="_blank" rel="noopener" data-cursor="hi">Telegram</a>
+        <a href="https://www.instagram.com/ou7ouz/" target="_blank" rel="noopener" data-cursor="hi">Instagram</a>
+      </div>
+    </div>
+
+    <p class="copy">© 2026 Ilkhom Shakirov · AI Specialist · Marketing Manager</p>
+  </section>
+
+  <div class="rk-fixed-container">
+    <div class="rk-overlay" id="rkOverlay">
+      <div class="rk-cell"><a href="#hero">Agencies</a></div>
+      <div class="rk-cell"><a href="#hero">Brands</a></div>
+      <div class="rk-cell"><a href="#work">Works</a></div>
+      <div class="rk-cell"><a href="#about">Insights</a></div>
+      <div class="rk-cell"><a href="#about">About</a></div>
+      <div class="rk-cell"><a href="#contact">Contact</a></div>
+      <div class="rk-cell icon-cell">
+        <a href="https://www.instagram.com/ou7ouz/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c.796 0 1.441.645 1.441 1.44s-.645 1.44-1.441 1.44c-.795 0-1.439-.645-1.439-1.44s.644-1.44 1.439-1.44z"/></svg>
+        </a>
+      </div>
+      <div class="rk-cell icon-cell">
+        <a href="https://www.linkedin.com/in/ilkhom-shakirov-38b231385" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+        </a>
+      </div>
+      <div class="rk-cell icon-cell">
+        <a href="https://t.me/mirabadskiy" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm5.891 7.02l-1.912 9.03c-.144.645-.525.803-1.065.501l-2.91-2.144-1.405 1.352c-.156.156-.285.285-.585.285l.209-2.961 5.39-4.871c.234-.209-.051-.325-.36-.12l-6.66 4.194-2.871-.897c-.624-.195-.636-.624.13-.921l11.21-4.321c.519-.195.972.114.834.894z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="rk-bar">
+      <div class="rk-bar-segment rk-logo-seg" onclick="window.scrollTo({top:0, behavior:'smooth'})">
+        <img src="logok.png" alt="Logo">
+      </div>
+
+      <div class="rk-bar-segment rk-dir-seg" id="rkDirSeg">
+        <span>Directory</span>
+        <div class="rk-ham" id="rkHam">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+
+      <div class="rk-bar-segment rk-sound-seg" id="rkSoundSeg">
+        <span>Sound</span>
+        <div class="rk-bars" id="rkBars">
+          <div class="rk-bar-line"></div>
+          <div class="rk-bar-line"></div>
+          <div class="rk-bar-line"></div>
+          <div class="rk-bar-line"></div>
+          <div class="rk-bar-line"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </main>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+  /* ---- THEME ---- */
+  const html   = document.documentElement;
+  const tBtn   = document.getElementById('themeBtn');
+  const tIcon  = document.getElementById('tIcon');
+  const tLabel = document.getElementById('tLabel');
+  let dark = (localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')) === 'dark';
+  tIcon.textContent  = dark ? '◐' : '◑';
+  tLabel.textContent = dark ? 'Light' : 'Dark';
+
+  tBtn.addEventListener('click', () => {
+    dark = !dark;
+    html.setAttribute('data-theme', dark ? 'dark' : 'light');
+    localStorage.setItem('theme', dark ? 'dark' : 'light');
+    tIcon.textContent  = dark ? '◐' : '◑';
+    tLabel.textContent = dark ? 'Light' : 'Dark';
+    // also update nav scrolled bg dynamically via CSS variables - handled by CSS
+  });
+
+  /* ---- CURSOR (Miro-style) - desktop/mouse only ---- */
+  if (window.matchMedia('(pointer: fine)').matches) {
+    const cursorEl = document.getElementById('cursor');
+
+    // Move cursor so the arrow TIP sits exactly on the mouse pointer
+    // Keep it hidden until the first move so it doesn't flash at (0,0) on load
+    document.addEventListener('mousemove', e => {
+      cursorEl.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+      cursorEl.style.opacity = '1';
+    }, { once: false });
+
+    // Hide cursor when mouse leaves the window
+    document.addEventListener('mouseleave', () => {
+      cursorEl.style.opacity = '0';
+    });
+    document.addEventListener('mouseenter', () => {
+      cursorEl.style.opacity = '1';
+    });
+
+    // Hover states - interactive targets
+    document.querySelectorAll('a, button, .pcard:not(.pcard--wip)').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        document.body.classList.add('is-hovering');
+        const t = document.getElementById('cursorLabelText');
+        if (t && el.dataset.cursor === 'hi') {
+          t.style.opacity = '0';
+          setTimeout(() => { t.textContent = 'Say hi! 👋'; t.style.opacity = '1'; }, 120);
+        }
+      });
+      el.addEventListener('mouseleave', () => {
+        document.body.classList.remove('is-hovering');
+        const t = document.getElementById('cursorLabelText');
+        if (t && t.textContent !== 'Guest') {
+          t.style.opacity = '0';
+          setTimeout(() => { t.textContent = 'Guest'; t.style.opacity = '1'; }, 120);
+        }
+      });
+    });
+  }
+
+  /* ---- PRELOADER ---- */
+  const preloader = document.getElementById('preloader');
+  const plBar     = document.getElementById('plBar');
+  const plName    = document.querySelector('.pl-name span');
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  if (sessionStorage.getItem('dvdrod_visited')) {
+    // Returning visitor — skip preloader, play hero + scroll animations immediately
+    preloader.style.display = 'none';
+    heroIn();
+  } else {
+    // First visit — run full intro
+    sessionStorage.setItem('dvdrod_visited', '1');
+    gsap.to(plName, { y: 0, duration: 0.7, ease: 'power3.out', delay: 0.1 });
+    setTimeout(() => { plBar.style.width = '100%'; }, 150);
+    setTimeout(() => {
+      gsap.to(preloader, {
+        yPercent: -100,
+        duration: 0.9,
+        ease: 'power3.inOut',
+        onComplete: () => {
+          preloader.style.display = 'none';
+          heroIn();
+        }
+      });
+    }, 1300);
+  }
+
+  /* ---- HERO ENTRANCE ---- */
+  function heroIn() {
+    // Set initial hidden states via JS (not CSS) so elements are visible before JS runs
+    gsap.set('.nav-logo', { opacity: 0 });
+    gsap.set('.nav-right', { opacity: 0 });
+    gsap.set('.pill', { opacity: 0, x: 32 });
+    // Nav — simple fade in
+    gsap.to(['.nav-logo', '.nav-right'], {
+      opacity: 1, duration: 0.7, stagger: 0.12, ease: 'power2.out'
+    });
+    // Title lines
+    gsap.to('.hero-title .tl span', {
+      y: 0, duration: 1.05, stagger: 0.1, ease: 'power3.out', delay: 0.05
+    });
+    // Eyebrow
+    gsap.to('.hero-eyebrow span', {
+      y: 0, duration: 0.75, ease: 'power3.out', delay: 0.5
+    });
+    // Desc
+    gsap.set('.hero-desc', { opacity: 0, y: 16 });
+    gsap.to('.hero-desc', { opacity: 1, y: 0, duration: 0.75, ease: 'power2.out', delay: 0.65 });
+    // Pills
+    gsap.to('.pill', {
+      x: 0, opacity: 1, duration: 0.55, stagger: 0.1,
+      ease: 'power2.out', delay: 0.75
+    });
+    // Scroll hint
+    gsap.to('.scroll-hint', { opacity: 1, duration: 0.6, delay: 1.2 });
+
+    // Scroll animations
+    initScroll();
+  }
+
+  /* ---- SCROLL ANIMATIONS ---- */
+  function initScroll() {
+    // Set initial hidden states via JS so elements are visible if JS fails
+    gsap.set('.pcard:not([hidden])', { opacity: 0, y: 40 });
+    gsap.set('.pdf-strip', { opacity: 0, y: 24 });
+    gsap.set('.about-bio .cv-btn', { opacity: 0, y: 16 });
+
+    // Skip scroll animations for users who prefer reduced motion
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('.pcard:not([hidden]), .pdf-strip, .about-bio .cv-btn').forEach(el => {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      });
+      return;
+    }
+
+    // Section titles — clipped line reveal (same as hero)
+    gsap.utils.toArray('.s-title').forEach(el => {
+      const spans = el.querySelectorAll('.tl span');
+      gsap.to(spans, {
+        y: 0, duration: 1.05, stagger: 0.08, ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 88%' }
+      });
+    });
+
+    // Project cards — visible only, animate from CSS initial state
+    gsap.utils.toArray('.pcard:not([hidden])').forEach((el, i) => {
+      gsap.to(el, {
+        opacity: 1, y: 0, duration: 0.75, ease: 'power2.out',
+        delay: i * 0.08,
+        scrollTrigger: { trigger: el, start: 'top 88%' }
+      });
+    });
+
+    // About bio paragraphs
+    gsap.utils.toArray('.about-bio p').forEach((el, i) => {
+      gsap.fromTo(el,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.65, delay: i * 0.08, ease: 'power2.out',
+          scrollTrigger: { trigger: el, start: 'top 90%' }
+        }
+      );
+    });
+
+    // PDF strip
+    gsap.to('.pdf-strip', {
+      opacity: 1, y: 0, duration: 0.65, ease: 'power2.out',
+      scrollTrigger: { trigger: '.pdf-strip', start: 'top 88%' }
+    });
+
+    // View CV button
+    gsap.to('.about-bio .cv-btn', {
+      opacity: 1, y: 0, duration: 0.65, ease: 'power2.out',
+      scrollTrigger: { trigger: '.about-bio .cv-btn', start: 'top 92%' }
+    });
+
+    // About side blocks
+    gsap.utils.toArray('.about-side > div').forEach((el, i) => {
+      gsap.fromTo(el,
+        { opacity: 0, y: 24 },
+        { opacity: 1, y: 0, duration: 0.65, delay: i * 0.1, ease: 'power2.out',
+          scrollTrigger: { trigger: el, start: 'top 88%' }
+        }
+      );
+    });
+
+    // Contact headline lines
+    gsap.utils.toArray('.contact-headline .tl span').forEach((el, i) => {
+      gsap.fromTo(el,
+        { y: '110%' },
+        { y: '0%', duration: 0.9, delay: i * 0.12, ease: 'power3.out',
+          scrollTrigger: { trigger: el, start: 'top 90%' }
+        }
+      );
+    });
+
+    // Contact footer
+    gsap.fromTo('.contact-footer',
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out',
+        scrollTrigger: { trigger: '.contact-footer', start: 'top 90%' }
+      }
+    );
+
+    // Refresh trigger positions once early, then again after all images are loaded
+    setTimeout(() => ScrollTrigger.refresh(), 400);
+    window.addEventListener('load', () => ScrollTrigger.refresh());
+  }
+
+  /* ---- NAV SCROLL STATE ---- */
+  const navEl = document.getElementById('nav');
+  let navScrolled = false;
+
+  window.addEventListener('scroll', () => {
+    const shouldScroll = window.scrollY > 60;
+    if (shouldScroll === navScrolled) return;
+    navScrolled = shouldScroll;
+    navEl.classList.toggle('scrolled', shouldScroll);
+  }, { passive: true });
+
+  /* ---- SMOOTH ANCHOR SCROLL ---- */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  /* ---- COPY EMAIL ---- */
+  const copyBtn = document.getElementById('copyEmailBtn');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText('dvd.rod@proton.me').then(() => {
+        copyBtn.classList.add('copied');
+        copyBtn.innerHTML = '<svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 7l3.5 3.5L11 3"/></svg>';
+        setTimeout(() => {
+          copyBtn.classList.remove('copied');
+          copyBtn.innerHTML = '<svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4.5" y="4.5" width="7" height="7" rx="1.2"/><path d="M1.5 8.5V2.5a1 1 0 0 1 1-1h6"/></svg>';
+        }, 2000);
+      });
+    });
+  }
+
+  /* ---- R-K TOOLBAR JS ---- */
+  const rkOverlay  = document.getElementById('rkOverlay');
+  const rkHam      = document.getElementById('rkHam');
+  const rkDirSeg   = document.getElementById('rkDirSeg');
+  const rkSoundSeg = document.getElementById('rkSoundSeg');
+  const rkBars     = document.getElementById('rkBars');
+
+  let rkMenuOpen = false;
+  let rkSoundOn  = false;
+  let rkAudio    = null;
+
+  function toggleRkMenu() {
+    rkMenuOpen = !rkMenuOpen;
+    rkOverlay.classList.toggle('open', rkMenuOpen);
+    rkHam.classList.toggle('active', rkMenuOpen);
+  }
+
+  function toggleRkSound() {
+    rkSoundOn = !rkSoundOn;
+    rkBars.classList.toggle('playing', rkSoundOn);
+
+    if (rkSoundOn) {
+      if (!rkAudio) {
+        rkAudio = new Audio('audio1.mp3');
+        rkAudio.loop = true;
+      }
+      rkAudio.play().catch(e => {
+        console.error("Audio playback blocked", e);
+        rkSoundOn = false;
+        rkBars.classList.remove('playing');
+      });
+    } else {
+      if (rkAudio) {
+        rkAudio.pause();
+      }
+    }
+  }
+
+  rkDirSeg.addEventListener('click', toggleRkMenu);
+  rkSoundSeg.addEventListener('click', toggleRkSound);
+
+  rkOverlay.querySelectorAll('.rk-cell').forEach(cell => {
+    cell.addEventListener('click', (e) => {
+      const link = cell.querySelector('a');
+      if (link) {
+        const targetId = link.getAttribute('href');
+        if (targetId && targetId.startsWith('#')) {
+          e.preventDefault();
+          const target = document.querySelector(targetId);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            toggleRkMenu();
+          }
+        } else if (link.getAttribute('target') === '_blank') {
+          // Allow default behavior for external links
+          toggleRkMenu();
+        }
+      } else {
+        toggleRkMenu();
+      }
+    });
+  });
+  </script>
+  
+</body>
+</html>
+
+
+
+
+
+
