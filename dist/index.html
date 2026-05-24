@@ -40,7 +40,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:ital,wght@0,300;0,400;0,600;1,300&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Unbounded:wght@700;800&family=Inter:ital,wght@0,300;0,400;0,600;1,300&display=swap" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:ital,wght@0,300;0,400;0,600;1,300&display=swap" /></noscript>
 
 
@@ -200,7 +200,7 @@
       gap: 20px;
     }
     .pl-name {
-      font-family: 'Syne', sans-serif;
+      font-family: 'Syne', 'Unbounded', sans-serif;
       font-size: clamp(32px, 6vw, 72px);
       font-weight: 800;
       letter-spacing: -0.045em;
@@ -258,7 +258,7 @@
       box-shadow: 0 4px 24px rgba(0,0,0,0.10);
     }
     .nav-logo {
-      font-family: 'Syne', sans-serif;
+      font-family: 'Syne', 'Unbounded', sans-serif;
       font-size: 15px;
       font-weight: 800;
       letter-spacing: -0.02em;
@@ -336,7 +336,7 @@
     .hero-eyebrow span { display: inline-block; transform: translateY(110%); }
 
     .hero-title {
-      font-family: 'Syne', sans-serif;
+      font-family: 'Syne', 'Unbounded', sans-serif;
       font-size: clamp(72px, 12vw, 176px);
       font-weight: 800;
       line-height: 0.88;
@@ -443,7 +443,7 @@
     }
     .marquee-wrap:hover .marquee-track { animation-play-state: paused; }
     .mq-item {
-      font-family: 'Syne', sans-serif;
+      font-family: 'Syne', 'Unbounded', sans-serif;
       font-size: 11px;
       font-weight: 600;
       letter-spacing: 0.12em;
@@ -476,14 +476,14 @@
       margin-bottom: 8px;
     }
     .s-title {
-      font-family: 'Syne', sans-serif;
+      font-family: 'Syne', 'Unbounded', sans-serif;
       font-size: clamp(52px, 8vw, 110px);
       font-weight: 800;
       letter-spacing: -0.045em;
       line-height: 0.88;
     }
     .s-count {
-      font-family: 'Syne', sans-serif;
+      font-family: 'Syne', 'Unbounded', sans-serif;
       font-size: 13px;
       font-weight: 700;
       color: var(--muted);
@@ -718,7 +718,7 @@
     }
     .ei-l { display: flex; flex-direction: column; gap: 2px; }
     .ei-co {
-      font-family: 'Syne', sans-serif;
+      font-family: 'Syne', 'Unbounded', sans-serif;
       font-size: 14px;
       font-weight: 700;
       letter-spacing: -0.01em;
@@ -738,7 +738,7 @@
       gap: 12px;
     }
     .aw-l { display: flex; flex-direction: column; gap: 2px; }
-    .aw-title { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: -0.01em; }
+    .aw-title { font-family: 'Syne', 'Unbounded', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: -0.01em; }
     .aw-issuer { font-size: 12px; color: var(--muted); }
     .aw-yr { font-size: 11px; color: var(--muted); white-space: nowrap; flex-shrink: 0; }
 
@@ -764,7 +764,7 @@
       padding: 40px 44px 80px;
     }
     .contact-headline {
-      font-family: 'Syne', sans-serif;
+      font-family: 'Syne', 'Unbounded', sans-serif;
       font-size: clamp(52px, 9vw, 130px);
       font-weight: 800;
       letter-spacing: -0.045em;
@@ -982,16 +982,199 @@
     }
     .rk-bar-segment:hover { border-color: var(--border-hover); background: var(--bg); }
 
-    /* Light mode logo color flip */
-    [data-theme='light'] .rk-logo-seg img { filter: invert(1) brightness(0); }
-
-    .rk-logo-seg {
+    /* ─── BOTTOM POPOVER LANGUAGE SWITCHER ─── */
+    .rk-lang-seg {
+      position: relative;
       width: 64px;
       flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .rk-logo-seg img {
-      width: 50px; height: 50px;
-      object-fit: contain;
+    .rk-lang-toggle {
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      cursor: none !important;
+      transition: color 0.3s ease;
+    }
+    .rk-lang-toggle:hover {
+      color: var(--fg);
+    }
+    .rk-lang-toggle svg {
+      width: 10px;
+      height: 10px;
+      stroke: currentColor;
+      stroke-width: 2.5;
+      transition: transform 0.3s ease;
+    }
+    .rk-lang-seg.open .rk-lang-toggle svg {
+      transform: rotate(180deg);
+    }
+    .rk-lang-popover {
+      position: absolute;
+      bottom: 56px;
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      display: flex;
+      flex-direction: column;
+      padding: 4px;
+      gap: 2px;
+      min-width: 70px;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+      z-index: 100;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    .rk-lang-seg.open .rk-lang-popover {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+    .rk-popover-btn {
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-family: 'Inter', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 8px 12px;
+      border-radius: 8px;
+      cursor: none !important;
+      transition: all 0.2s ease;
+      text-align: center;
+      width: 100%;
+    }
+    .rk-popover-btn:hover {
+      background: rgba(255,255,255,0.06);
+      color: var(--fg);
+    }
+    .rk-popover-btn.active {
+      background: var(--fg);
+      color: var(--bg);
+      font-weight: 800;
+    }
+    
+    /* ─── RESPONSIVE LAYOUT RESPONSES TO PREVENT OVERFLOW ─── */
+    @media (max-width: 480px) {
+      .contact-headline {
+        font-size: clamp(30px, 8.8vw, 46px) !important;
+        line-height: 1.05 !important;
+        margin: 32px 0 40px !important;
+        letter-spacing: -0.03em !important;
+      }
+      .s-title {
+        font-size: clamp(30px, 8.8vw, 46px) !important;
+        line-height: 1.05 !important;
+        letter-spacing: -0.03em !important;
+      }
+      /* Prevent overall horizontal viewport overflow */
+      html, body {
+        max-width: 100vw !important;
+        overflow-x: hidden !important;
+      }
+    }
+    
+    /* ─── NATIVE MINIMALIST LOGO GLITCH EFFECT ─── */
+    .nav-logo {
+      position: relative;
+      display: inline-block;
+      cursor: none !important;
+    }
+    .nav-logo::before,
+    .nav-logo::after {
+      content: attr(data-text);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      opacity: 0.85;
+    }
+    .nav-logo::before {
+      left: 1.5px;
+      text-shadow: -1.5px 0 var(--accent);
+      clip-path: inset(100% 0 0 0);
+      animation: logo-glitch-1 1s infinite linear alternate-reverse;
+    }
+    .nav-logo::after {
+      left: -1.5px;
+      text-shadow: -1.5px 0 #00ffff;
+      clip-path: inset(100% 0 0 0);
+      animation: logo-glitch-2 1s infinite linear alternate-reverse;
+    }
+    .nav-logo:hover::before {
+      animation: logo-glitch-1 0.3s infinite linear alternate-reverse;
+    }
+    .nav-logo:hover::after {
+      animation: logo-glitch-2 0.3s infinite linear alternate-reverse;
+    }
+    
+    @keyframes logo-glitch-1 {
+      0%, 95%, 100% {
+        clip-path: inset(100% 0 0 0);
+        transform: translate(0);
+      }
+      96% {
+        clip-path: inset(20% 0 50% 0);
+        transform: translate(-1px, -1px);
+      }
+      97% {
+        clip-path: inset(75% 0 5% 0);
+        transform: translate(1px, 1px);
+      }
+      98% {
+        clip-path: inset(10% 0 85% 0);
+        transform: translate(-1px, 1px);
+      }
+      99% {
+        clip-path: inset(45% 0 35% 0);
+        transform: translate(1px, -1px);
+      }
+    }
+    
+    @keyframes logo-glitch-2 {
+      0%, 95%, 100% {
+        clip-path: inset(100% 0 0 0);
+        transform: translate(0);
+      }
+      96% {
+        clip-path: inset(60% 0 15% 0);
+        transform: translate(1px, 1px);
+      }
+      97% {
+        clip-path: inset(15% 0 70% 0);
+        transform: translate(-1px, -1px);
+      }
+      98% {
+        clip-path: inset(80% 0 5% 0);
+        transform: translate(1px, -1px);
+      }
+      99% {
+        clip-path: inset(30% 0 55% 0);
+        transform: translate(-1px, 1px);
+      }
     }
 
     .rk-dir-seg {
@@ -1082,7 +1265,7 @@
 
   <!-- ==================== PRELOADER ==================== -->
   <div id="preloader" aria-hidden="true">
-    <div class="pl-name"><span>Ilkhom Shakirov</span></div>
+    <div class="pl-name"><span data-i18n="pl_name">Ilkhom Shakirov</span></div>
     <div class="pl-bar-wrap"><div class="pl-bar" id="plBar"></div></div>
   </div>
 
@@ -1107,7 +1290,7 @@
 
       <!-- ==================== NAV ==================== -->
   <nav id="nav">
-    <a href="#hero" class="nav-logo">mirabadskiy</a>
+    <a href="#hero" class="nav-logo" data-text="mirabadskiy">mirabadskiy</a>
     <div class="nav-right">
       <ul class="nav-links">
         <li><a href="#work">Work</a></li>
@@ -1125,45 +1308,45 @@
 
   <!-- ==================== HERO ==================== -->
   <section id="hero">
-    <p class="hero-eyebrow"><span>AI Specialist · Marketing Manager</span></p>
+    <p class="hero-eyebrow"><span data-i18n="hero_eyebrow">AI Specialist · Marketing Manager</span></p>
 
     <h1 class="hero-title">
-      <span class="tl"><span>Ilkhom</span></span>
-      <span class="tl"><span>Shaki&shy;rov</span></span>
+      <span class="tl"><span data-i18n="hero_t1">Ilkhom</span></span>
+      <span class="tl"><span data-i18n="hero_t2">Shaki&shy;rov</span></span>
     </h1>
 
     <div class="hero-bottom">
       <p class="hero-desc">
-        <span>Tashkent based. Building experience in Artificial Intelligence and Marketing through real projects in social media, content creation, and brand growth.</span>
+        <span data-i18n="hero_desc">Tashkent based. Building experience in Artificial Intelligence and Marketing through real projects in social media, content creation, and brand growth.</span>
       </p>
       <div class="hero-right">
-        <div class="pill available"><span class="pill-dot"></span>Available for work</div>
-        <div class="pill">Tashkent, Uzbekistan</div>
+        <div class="pill available"><span class="pill-dot"></span><span data-i18n="hero_pill1">Available for work</span></div>
+        <div class="pill" data-i18n="hero_pill2">Tashkent, Uzbekistan</div>
       </div>
     </div>
 
     <div class="scroll-hint" aria-hidden="true">
       <div class="sh-line"></div>
-      <span>Scroll</span>
+      <span data-i18n="scroll_hint">Scroll</span>
     </div>
   </section>
 
   <!-- ==================== MARQUEE ==================== -->
   <div class="marquee-wrap" aria-hidden="true">
     <div class="marquee-track">
-      <span class="mq-item">Artificial Intelligence</span>
-      <span class="mq-item">Marketing Strategy</span>
-      <span class="mq-item">Social Media Management</span>
-      <span class="mq-item">Content Creation</span>
-      <span class="mq-item">Brand Growth</span>
-      <span class="mq-item">Audience Engagement</span>
-      <span class="mq-item">Digital Marketing</span>
-      <span class="mq-item">AI Tools</span>
-      <span class="mq-item">Automation</span>
-      <span class="mq-item">Creative Thinking</span>
-      <span class="mq-item">Team Collaboration</span>
-      <span class="mq-item">Communication</span>
-      <span class="mq-item">Market Research</span>
+      <span class="mq-item" data-i18n="mq_ai">Artificial Intelligence</span>
+      <span class="mq-item" data-i18n="mq_marketing">Marketing Strategy</span>
+      <span class="mq-item" data-i18n="mq_social">Social Media Management</span>
+      <span class="mq-item" data-i18n="mq_content">Content Creation</span>
+      <span class="mq-item" data-i18n="mq_brand">Brand Growth</span>
+      <span class="mq-item" data-i18n="mq_audience">Audience Engagement</span>
+      <span class="mq-item" data-i18n="mq_digital">Digital Marketing</span>
+      <span class="mq-item" data-i18n="mq_tools">AI Tools</span>
+      <span class="mq-item" data-i18n="mq_automation">Automation</span>
+      <span class="mq-item" data-i18n="mq_creative">Creative Thinking</span>
+      <span class="mq-item" data-i18n="mq_team">Team Collaboration</span>
+      <span class="mq-item" data-i18n="mq_communication">Communication</span>
+      <span class="mq-item" data-i18n="mq_research">Market Research</span>
     </div>
   </div>
 
@@ -1171,8 +1354,8 @@
   <section id="work">
     <div class="s-header">
       <div>
-        <p class="s-label">Selected Projects</p>
-        <h2 class="s-title"><span class="tl"><span>Work</span></span></h2>
+        <p class="s-label" data-i18n="work_label">Selected Projects</p>
+        <h2 class="s-title"><span class="tl"><span data-i18n="work_title">Work</span></span></h2>
       </div>
     </div>
 
@@ -1186,8 +1369,8 @@
               <span class="pnum">01</span>
             </div>
             <div class="pcard-mid">
-              <p class="pyear">Osnova | 08.2025 – 09.2025</p>
-              <h3 class="pname">Building brand awareness <br> through marketing & <br>social growth</h3>
+              <p class="pyear" data-i18n="p1_year">Osnova | 08.2025 – 09.2025</p>
+              <h3 class="pname" data-i18n="p1_name">Building brand awareness <br> through marketing & <br>social growth</h3>
               <div class="tags">
                 <span class="tag">CONTENT</span>
                 <span class="tag">SOCIAL MEDIA</span>
@@ -1213,11 +1396,11 @@
           <div class="pcard-info">
             <div class="pcard-top" style="display:flex;align-items:center;gap:14px;">
               <span class="pnum">02</span>
-              <span class="wip-badge"><span class="wip-badge-dot"></span>Work in progress</span>
+              <span class="wip-badge"><span class="wip-badge-dot"></span><span data-i18n="wip">Work in progress</span></span>
             </div>
             <div class="pcard-mid">
-              <p class="pyear">Shakirov Studio | 08.2025 – Present</p>
-              <h3 class="pname">Managing content to <br> boost digital engagement</h3>
+              <p class="pyear" data-i18n="p2_year">Shakirov Studio | 08.2025 – Present</p>
+              <h3 class="pname" data-i18n="p2_name">Managing content to <br> boost digital engagement</h3>
               <div class="tags">
                 <span class="tag">MARKETING</span>
                 <span class="tag">BRAND STRATEGY</span>
@@ -1247,18 +1430,18 @@
   <section id="about">
     <div class="s-header">
       <div>
-        <p class="s-label">My story</p>
-        <h2 class="s-title"><span class="tl"><span>About</span></span></h2>
+        <p class="s-label" data-i18n="about_label">My story</p>
+        <h2 class="s-title"><span class="tl"><span data-i18n="about_title">About</span></span></h2>
       </div>
     </div>
 
     <div class="about-grid">
       <div class="about-bio">
-        <p><strong>Motivated first-year Business student at Inha University</strong> with a strong interest in Artificial Intelligence and Marketing. Focused on building brand awareness and creating effective strategies to engage target audiences.</p>
-        <p><strong>I have experience in</strong> social media management, content creation, and marketing strategy, contributing ideas and analyzing audience feedback to improve results.</p>
-        <p>I am currently working as a <strong>Director at Shakirov Studio</strong>, where I develop marketing strategies to increase brand awareness. Previously, I worked as a <strong>Marketing Assistant at Osnova</strong> and as an <strong>Assistant Social Media Manager at Chotqol Sanatorium</strong>.</p>
+        <p data-i18n="bio_p1"><strong>Motivated first-year Business student at Inha University</strong> with a strong interest in Artificial Intelligence and Marketing. Focused on building brand awareness and creating effective strategies to engage target audiences.</p>
+        <p data-i18n="bio_p2"><strong>I have experience in</strong> social media management, content creation, and marketing strategy, contributing ideas and analyzing audience feedback to improve results.</p>
+        <p data-i18n="bio_p3">I am currently working as a <strong>Director at Shakirov Studio</strong>, where I develop marketing strategies to increase brand awareness. Previously, I worked as a <strong>Marketing Assistant at Osnova</strong> and as an <strong>Assistant Social Media Manager at Chotqol Sanatorium</strong>.</p>
         <a href="Ilkhom_Shakirov_CV.png" target="_blank" rel="noopener" class="cv-btn" style="margin-top:20px;">
-          View CV
+          <span data-i18n="view_cv">View CV</span>
           <svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M2 12L12 2M12 2H4M12 2V10"/>
           </svg>
@@ -1268,48 +1451,48 @@
       <div class="about-side">
 
         <div>
-          <h3 class="detail-h">Experience</h3>
+          <h3 class="detail-h" data-i18n="exp_title">Experience</h3>
           <ul class="exp-list">
             <li class="exp-item">
               <div class="ei-l">
-                <span class="ei-co">Shakirov Studio</span>
-                <span class="ei-role">Director</span>
+                <span class="ei-co" data-i18n="exp1_co">Shakirov Studio</span>
+                <span class="ei-role" data-i18n="exp1_role">Director</span>
               </div>
-              <span class="ei-yr">09.2025 - Now</span>
+              <span class="ei-yr" data-i18n="exp1_yr">09.2025 - Now</span>
             </li>
             <li class="exp-item">
               <div class="ei-l">
-                <span class="ei-co">Osnova</span>
-                <span class="ei-role">Marketing Assistant</span>
+                <span class="ei-co" data-i18n="exp2_co">Osnova</span>
+                <span class="ei-role" data-i18n="exp2_role">Marketing Assistant</span>
               </div>
-              <span class="ei-yr">08.2025 - 09.2025</span>
+              <span class="ei-yr" data-i18n="exp2_yr">08.2025 - 09.2025</span>
             </li>
             <li class="exp-item">
               <div class="ei-l">
-                <span class="ei-co">Chotqol Sanatorium</span>
-                <span class="ei-role">Assistant Marketing Manager</span>
+                <span class="ei-co" data-i18n="exp3_co">Chotqol Sanatorium</span>
+                <span class="ei-role" data-i18n="exp3_role">Assistant Marketing Manager</span>
               </div>
-              <span class="ei-yr">01.2024 - 05.2025</span>
+              <span class="ei-yr" data-i18n="exp3_yr">01.2024 - 05.2025</span>
             </li>
           </ul>
         </div>
 
         <div>
-          <h3 class="detail-h">Skills</h3>
+          <h3 class="detail-h" data-i18n="skills_title">Skills</h3>
           <div class="skills-row">
-            <span class="skill-pill">Artificial Intelligence</span>
-            <span class="skill-pill">Marketing Strategy</span>
-            <span class="skill-pill">Social Media Management</span>
-            <span class="skill-pill">Content Creation</span>
-            <span class="skill-pill">Brand Growth</span>
-            <span class="skill-pill">Audience Engagement</span>
-            <span class="skill-pill">Digital Marketing</span>
-            <span class="skill-pill">AI Tools</span>
-            <span class="skill-pill">Automation</span>
-            <span class="skill-pill">Creative Thinking</span>
-            <span class="skill-pill">Team Collaboration</span>
-            <span class="skill-pill">Communication</span>
-            <span class="skill-pill">Market Research</span>
+            <span class="skill-pill" data-i18n="mq_ai">Artificial Intelligence</span>
+            <span class="skill-pill" data-i18n="mq_marketing">Marketing Strategy</span>
+            <span class="skill-pill" data-i18n="mq_social">Social Media Management</span>
+            <span class="skill-pill" data-i18n="mq_content">Content Creation</span>
+            <span class="skill-pill" data-i18n="mq_brand">Brand Growth</span>
+            <span class="skill-pill" data-i18n="mq_audience">Audience Engagement</span>
+            <span class="skill-pill" data-i18n="mq_digital">Digital Marketing</span>
+            <span class="skill-pill" data-i18n="mq_tools">AI Tools</span>
+            <span class="skill-pill" data-i18n="mq_automation">Automation</span>
+            <span class="skill-pill" data-i18n="mq_creative">Creative Thinking</span>
+            <span class="skill-pill" data-i18n="mq_team">Team Collaboration</span>
+            <span class="skill-pill" data-i18n="mq_communication">Communication</span>
+            <span class="skill-pill" data-i18n="mq_research">Market Research</span>
           </div>
         </div>
 
@@ -1319,28 +1502,28 @@
 
   <!-- ==================== CONTACT ==================== -->
   <section id="contact">
-    <p class="s-label">Get in touch</p>
+    <p class="s-label" data-i18n="contact_label">Get in touch</p>
 
     <div class="contact-headline">
-      <span class="tl"><span>Say hi!</span></span>
+      <span class="tl"><span data-i18n="contact_hi">Say hi!</span></span>
       <span class="tl">
-        <span><a href="mailto:dvd.rod@proton.me" data-cursor="hi">Let's talk <svg width="0.7em" height="0.7em" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;vertical-align:middle;margin-bottom:0.12em;"><path d="M3 15L15 3M15 3H5M15 3V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></span>
+        <span><a href="mailto:dvd.rod@proton.me" data-cursor="hi"><span data-i18n="contact_talk">Let's talk</span> <svg width="0.7em" height="0.7em" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;vertical-align:middle;margin-bottom:0.12em;"><path d="M3 15L15 3M15 3H5M15 3V13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></span>
       </span>
     </div>
 
     <div class="contact-footer">
       <div class="cf-left">
-        <p>Tashkent, Uzbekistan</p>
+        <p data-i18n="contact_location">Tashkent, Uzbekistan</p>
       </div>
       <div class="cf-right">
-        <a href="mailto:ilhomjonshakirov7@gmail.com" data-cursor="hi">Email</a>
+        <a href="mailto:ilhomjonshakirov7@gmail.com" data-cursor="hi" data-i18n="footer_email">Email</a>
         <a href="https://www.linkedin.com/in/ilkhom-shakirov-38b231385?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener" data-cursor="hi">LinkedIn</a>
         <a href="https://t.me/mirabadskiy" target="_blank" rel="noopener" data-cursor="hi">Telegram</a>
         <a href="https://www.instagram.com/ou7ouz/" target="_blank" rel="noopener" data-cursor="hi">Instagram</a>
       </div>
     </div>
 
-    <p class="copy">© 2026 Ilkhom Shakirov · AI Specialist · Marketing Manager</p>
+    <p class="copy" data-i18n="footer_copy">© 2026 Ilkhom Shakirov · AI Specialist · Marketing Manager</p>
   </section>
 
   <div class="rk-fixed-container">
@@ -1369,8 +1552,18 @@
     </div>
 
     <div class="rk-bar">
-      <div class="rk-bar-segment rk-logo-seg" onclick="window.scrollTo({top:0, behavior:'smooth'})">
-        <img src="/assets/logok-B6G7fS8w.png" alt="Logo">
+            <div class="rk-bar-segment rk-lang-seg" id="rkLangSeg">
+        <button class="rk-lang-toggle" id="rkLangToggle">
+          <span id="rkLangCurrent">eng</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <div class="rk-lang-popover" id="rkLangPopover">
+          <button class="rk-popover-btn" data-lang="en">eng</button>
+          <button class="rk-popover-btn" data-lang="uz">uz</button>
+          <button class="rk-popover-btn" data-lang="ru">ru</button>
+        </div>
       </div>
 
       <div class="rk-bar-segment rk-dir-seg" id="rkDirSeg">
@@ -1443,15 +1636,21 @@
         const t = document.getElementById('cursorLabelText');
         if (t && el.dataset.cursor === 'hi') {
           t.style.opacity = '0';
-          setTimeout(() => { t.textContent = 'Say hi! 👋'; t.style.opacity = '1'; }, 120);
+          const hiText = (typeof translations !== 'undefined' && translations[window.currentLang] && translations[window.currentLang]['contact_hi']) 
+            ? translations[window.currentLang]['contact_hi'] 
+            : 'Say hi!';
+          setTimeout(() => { t.textContent = hiText + ' 👋'; t.style.opacity = '1'; }, 120);
         }
       });
       el.addEventListener('mouseleave', () => {
         document.body.classList.remove('is-hovering');
         const t = document.getElementById('cursorLabelText');
-        if (t && t.textContent !== 'Guest') {
-          t.style.opacity = '0';
-          setTimeout(() => { t.textContent = 'Guest'; t.style.opacity = '1'; }, 120);
+        if (t) {
+          const guestText = { en: 'Guest', ru: 'Гость', uz: 'Mehmon' }[window.currentLang] || 'Guest';
+          if (t.textContent !== guestText) {
+            t.style.opacity = '0';
+            setTimeout(() => { t.textContent = guestText; t.style.opacity = '1'; }, 120);
+          }
         }
       });
     });
@@ -1569,7 +1768,7 @@
       scrollTrigger: { trigger: '.pdf-strip', start: 'top 88%' }
     });
 
-    // View CV button
+    // <span data-i18n="view_cv">View CV</span> button
     gsap.to('.about-bio .cv-btn', {
       opacity: 1, y: 0, duration: 0.65, ease: 'power2.out',
       scrollTrigger: { trigger: '.about-bio .cv-btn', start: 'top 92%' }
@@ -1655,7 +1854,7 @@
   let rkMenuOpen = false;
   let rkSoundOn  = false;
   let rkAudio    = null;
-
+  
   function toggleRkMenu() {
     rkMenuOpen = !rkMenuOpen;
     rkOverlay.classList.toggle('open', rkMenuOpen);
@@ -1707,7 +1906,78 @@
       }
     });
   });
-  </script>
+  
+  /* ---- LOCALIZATION ---- */
+  const rkLangSeg = document.getElementById('rkLangSeg');
+  const rkLangToggle = document.getElementById('rkLangToggle');
+  const rkLangCurrent = document.getElementById('rkLangCurrent');
+  const rkPopoverBtns = document.querySelectorAll('.rk-popover-btn');
+
+  // Declare global currentLang
+  window.currentLang = localStorage.getItem('lang') || 'en';
+
+  function applyLanguage(lang) {
+    document.documentElement.lang = lang;
+    window.currentLang = lang;
+    
+    if (rkLangCurrent) {
+      rkLangCurrent.textContent = lang;
+    }
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (typeof translations !== 'undefined' && translations[lang] && translations[lang][key]) {
+        el.innerHTML = translations[lang][key];
+      }
+    });
+
+    const cursorLabelText = document.getElementById('cursorLabelText');
+    if (cursorLabelText && cursorLabelText.textContent !== 'Say hi! 👋' && cursorLabelText.textContent !== 'Salom! 👋' && cursorLabelText.textContent !== 'Привет! 👋') {
+      const texts = { en: 'Guest', ru: 'Гость', uz: 'Mehmon' };
+      cursorLabelText.textContent = texts[lang] || 'Guest';
+    }
+
+    rkPopoverBtns.forEach(btn => {
+      if (btn.getAttribute('data-lang') === lang) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+  }
+
+  // Load translations.js dynamically with cache-buster timestamp
+  const script = document.createElement('script');
+  script.src = 'translations.js?v=' + Date.now();
+  script.onload = () => {
+    if (typeof translations !== 'undefined' && !translations[window.currentLang]) window.currentLang = 'en';
+    applyLanguage(window.currentLang);
+
+    if (rkLangToggle) {
+      rkLangToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        rkLangSeg.classList.toggle('open');
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!rkLangSeg.contains(e.target)) {
+          rkLangSeg.classList.remove('open');
+        }
+      });
+
+      rkPopoverBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const lang = e.currentTarget.getAttribute('data-lang');
+          window.currentLang = lang;
+          localStorage.setItem('lang', window.currentLang);
+          applyLanguage(window.currentLang);
+          rkLangSeg.classList.remove('open');
+        });
+      });
+    }
+  };
+  document.body.appendChild(script);
+</script>
   
 </body>
 </html>
