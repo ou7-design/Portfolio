@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://dvdrod.com/sitemap.xml
+Sitemap: https://mirabadskiy.vercel.app/sitemap.xml
