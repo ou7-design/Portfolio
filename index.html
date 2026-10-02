@@ -618,6 +618,12 @@
     .p-nt-onboarding .pcard-bg { background: linear-gradient(145deg, #1A0500 0%, #7A2800 55%, #D44A0A 100%); }
     .p-nt-quests     .pcard-bg { background: transparent; }
     .p-nt-referral   .pcard-bg { background: transparent; }
+    .p-nt-referral .pcard-vis { background: #ffffff; }
+    .p-nt-referral .pcard-img { object-fit: cover; }
+    .p-nt-referral .p-arrow { background: rgba(0,0,0,0.06); border-color: rgba(0,0,0,0.12); }
+    .p-nt-referral .p-arrow svg path { stroke: #000; }
+    .p-nt-referral:hover .p-arrow { background: #000; border-color: #000; }
+    .p-nt-referral:hover .p-arrow svg path { stroke: #fff; }
 
     .pcard-img {
       position: absolute;
@@ -1574,25 +1580,23 @@
       </article>
 
       <!-- 03 - NeoTaste Referral -->
-      <article class="pcard p-nt-referral pcard--wip" data-index="2" style="cursor:none;">
+      <article class="pcard p-nt-referral" data-index="2" onclick="window.location='https://www.monvitalmed.uz/'" style="cursor:none;">
         <div class="pcard-inner">
           <div class="pcard-info">
-            <div class="pcard-top" style="display:flex;align-items:center;gap:14px;">
+            <div class="pcard-top">
               <span class="pnum">02</span>
-              <span class="wip-badge"><span class="wip-badge-dot"></span><span data-i18n="wip">Work in progress</span></span>
             </div>
             <div class="pcard-mid">
-              <p class="pyear" data-i18n="p2_year">Shakirov Studio | 08.2025 – Present</p>
-              <h3 class="pname" data-i18n="p2_name">Managing content to <br> boost digital engagement</h3>
+              <h3 class="pname" data-i18n="p2_name">Designing websites <br> that connect & engage</h3>
               <div class="tags">
-                <span class="tag">MARKETING</span>
-                <span class="tag">BRAND STRATEGY</span>
+                <span class="tag" data-i18n="tag_webdesign">WEB DESIGN</span>
+                <span class="tag" data-i18n="tag_dev">DEVELOPMENT</span>
               </div>
             </div>
           </div>
           <div class="pcard-vis">
             <div class="pcard-bg"></div>
-            <img class="pcard-img" src="/logostudio.png" alt="Referral A/B Test case study cover">
+            <img class="pcard-img" src="/monvital.jpg" alt="Monvital Medical Center">
             <div class="pcard-img-overlay"></div>
             <div class="p-arrow" aria-hidden="true" style="z-index:3;">
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
